@@ -28,14 +28,14 @@ googleProvider.setCustomParameters({
 export const auth = getAuth();
 export const signInWithGooglePopup = () =>
   signInWithPopup(auth, googleProvider);
-// export const signInWithGoogleRedirect = () =>
-//   signInWithRedirect(auth, googleProvider);
+export const signInWithGoogleRedirect = () =>
+  signInWithRedirect(auth, googleProvider);
 
 export const db = getFirestore();
 
 export const createUserDocumentFromAuth = async (
-  userAuth
-  // additionalInformation = {}
+  userAuth,
+  additionalInformation = {}
 ) => {
   if (!userAuth) return;
 
@@ -52,7 +52,7 @@ export const createUserDocumentFromAuth = async (
         displayName,
         email,
         createdAt,
-        // ...additionalInformation,
+        ...additionalInformation,
       });
     } catch (error) {
       console.log('error creating the user', error.message);
